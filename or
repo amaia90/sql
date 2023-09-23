@@ -1,1 +1,62 @@
-kkkkmk
+INSERT INTO estudiantes(id_estudiante, estudiantes_nombre, estudiantes_apellido, estudiantes_email, estudiantes_carrera, estudiantes-telefono, estudiantes_cursos_id, estudiantes_calificaciones_id)
+VALUES ("Amaia", "Larrea”, “amalarrea@gmail.com”, “Ingenieria”, 567894356, 2, 3);
+
+INSERT INTO estudiantes(id_estudiante, estudiantes_nombre, estudiantes_apellido, estudiantes_email, estudiantes_carrera, estudiantes-telefono, id_estudiantes_cursos, id_estudiantes_calificaciones)
+VALUES ("Mitxel", "Andres”, “mi.janmu@gmail.com”, “Historia”, 897543212, 1, 2);
+
+INSERT INTO estudiantes(id_estudiante, estudiantes_nombre, estudiantes_apellido, estudiantes_email, estudiantes_carrera, estudiantes-telefono, id_estudiantes_cursos, id_estudiantes_calificaciones)
+VALUES ("Sara", "Reyes”, “sam87@gmail.com”, “Biologia”, 7654323, 3, 1);
+
+INSERT INTO profesores(id_profesores, profesores_nombre, profesores_apellidos, profesores_cursos_id)
+VALUES ("Armando", “Centinela”, 2);
+
+INSERT INTO profesores(id_profesores, profesores_nombre, profesores_apellidos, profesores_cursos_id)
+VALUES ("Jose Luis", “Sampedro”, 1);
+
+INSERT INTO profesores(id_profesores, profesores_nombre, profesores_apellidos, profesores_cursos_id)
+VALUES ("Olga", “Lucas”, 3);
+
+
+INSERT INTO cursos(id_cursos, cursos_nombre, cursos_estudiantes_id)
+VALUES ("informática”, 2);
+
+INSERT INTO cursos(id_cursos, cursos_nombre, cursos_estudiantes_id)
+VALUES ("geografía”, 1);
+
+INSERT INTO cursos(id_cursos, cursos_nombre, cursos_estudiantes_id)
+VALUES ("música”, 3);
+
+INSERT INTO calificaciones(id_calificaciones, calificaciones_profesores_id, calificaciones_estudiantes_id, calificaciones_cursos_id, calificaciones_examenfinal)
+VALUES (1, 2, 3, 5);
+
+INSERT INTO calificaciones(id_calificaciones, calificaciones_profesores_id, calificaciones_estudiantes_id, calificaciones_cursos_id, calificaciones_examenfinal)
+VALUES (2, 3, 2, 10);
+
+
+INSERT INTO calificaciones(id_calificaciones, calificaciones_profesores_id, calificaciones_estudiantes_id, calificaciones_cursos_id, calificaciones_examenfinal)
+VALUES (3, 1, 1, 8);
+
+
+SELECT AVG(calificaciones_examenfinal), calificaciones_profesores_id
+FROM calificaciones
+GROUP BY profesores_id;
+
+SELECT calificaciones_estudiantes_id, Max(calificaciones_examenfinal)
+FROM calificaciones
+GROUP BY calificaciones_estudiantes_id;
+
+
+SELECT  cursos_nombre, cursos_estudiantes_id
+FROM cursos
+ORDER BY cursos_estudiantes_id;
+
+
+SELECT calificaciones_cursos_nombre, AVG(calificaciones_examenfinal) as calificacion_orden
+FROM calificaciones
+ORDER BY calificacion_orden;
+
+SELECT *
+FROM estudiantes
+INNER JOIN profesores
+WHERE profesores_cursos_id=estudiantes.cursos_id;
+
